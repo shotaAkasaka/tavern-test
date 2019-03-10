@@ -1,0 +1,43 @@
+# Every test file has one or more tests...
+test_name: Github API Test
+
+# ...and each test has one or more stages (e.g. an HTTP request)
+stages:
+  - name: Create Issue
+
+    request:
+      url:  https://api.github.com/repos/shotaAkasaka/tavern-test/issues
+      headers:
+        Authorization: "token {tavern.env_vars.SECRET_CI_COMMIT_AUTH}"
+      method: POST
+      json:
+        title: "Issue From Tavern Test"
+        body: "I'm hungry"
+
+    response:
+      status_code: 201
+      body:
+        title: "{tavern.request_vars.json.title}"
+        body: "{tavern.request_vars.json.body}"
+        state: "open"
+      save:
+        body:
+          issue_id: number
+
+  - name: Edit Issue
+
+    request:
+      url:  "https://api.github.com/repos/shotaAkasaka/tavern-test/issues/{issue_id}"
+      headers:
+        Authorization: "token {tavern.env_vars.SECRET_CI_COMMIT_AUTH}"
+      method: PATCH
+      json:
+        title: "Edit Issue From Tavern"
+        body: "I'm very hungry!"
+
+    response:
+      status_code: 200
+      body:
+        title: "{tavern.request_vars.json.title}"
+        body: "{tavern.request_vars.json.body}"
+        state: "open"
