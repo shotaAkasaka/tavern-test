@@ -6,9 +6,10 @@
 
 version: 2
 jobs:
-  test:
+  build:
     docker:
       - image: circleci/python:3.7.0-stretch
+    working_directory: ~/cypress-test
     steps:
       - checkout
       - run:
