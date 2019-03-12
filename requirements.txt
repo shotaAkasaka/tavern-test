@@ -23,9 +23,9 @@ pykwalify==1.7.0          # via tavern
 pytest==4.3.0             # via tavern
 python-box==3.2.4         # via tavern
 python-dateutil==2.8.0    # via pykwalify
-# pyyaml==3.13              # via pykwalify, tavern
+pyyaml==3.13              # via pykwalify, tavern
 requests==2.21.0          # via tavern
-# six==1.12.0               # via pytest, python-dateutil, stevedore
+six==1.12.0               # via pytest, python-dateutil, stevedore
 stevedore==1.30.1         # via tavern
 tavern[pytest]==0.22.1
 urllib3==1.24.1           # via requests
