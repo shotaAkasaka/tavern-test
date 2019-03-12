@@ -16,10 +16,6 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt-get install -y unixodbc-dev
-            sudo apt-get remove python3-yaml
-            sudo apt-get remove --auto-remove python3-yaml
-            sudo apt-get purge python3-yaml
-            sudo apt-get purge --auto-remove python3-yaml
       - restore_cache:
           key: pip-cache-{{ .Branch }}-{{ checksum "requirements.txt" }}
       - run:
@@ -38,7 +34,7 @@ jobs:
       - run:
           name: create test data
           command : |
-            python3 create_test_yaml.py
+            python create_test_yaml.py
       - run:
           name: run test
           command: |
