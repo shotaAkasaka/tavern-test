@@ -16,6 +16,10 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt-get install -y unixodbc-dev
+            sudo apt-get remove python3-yaml
+            sudo apt-get remove --auto-remove python3-yaml
+            sudo apt-get purge python3-yaml
+            sudo apt-get purge --auto-remove python3-yaml
       - restore_cache:
           key: pip-cache-{{ .Branch }}-{{ checksum "requirements.txt" }}
       - run:
