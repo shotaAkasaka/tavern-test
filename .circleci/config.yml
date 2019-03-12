@@ -34,7 +34,7 @@ jobs:
       - run:
           name: install pyyaml
           command: |
-            python3 -m pip install pyyaml
+            sudo python3 -m pip install pyyaml
       - run:
           name: create test data
           command : |
