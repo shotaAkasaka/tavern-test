@@ -9,7 +9,7 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7.0-stretch
-    working_directory: ~/cypress-test
+    working_directory: ~/tavern-test
     steps:
       - checkout
       - run:
@@ -25,6 +25,7 @@ jobs:
             . venv/bin/activate
             pip install -r requirements.txt --exists-action=w
       - save_cache:
+          key: pip-cache-{{ checksum "requirements.txt" }}
           paths:
             - ./venv
 # 2. テスト用データの生成
