@@ -1,6 +1,9 @@
 # Every test file has one or more tests...
 test_name: Github API Test
 
+includes:
+  - !include common.yaml
+
 # ...and each test has one or more stages (e.g. an HTTP request)
 stages:
   - name: Create Issue
@@ -32,12 +35,14 @@ stages:
         Authorization: "token {tavern.env_vars.SECRET_CI_COMMIT_AUTH}"
       method: PATCH
       json:
-        title: "Edit Issue From Tavern"
-        body: "I'm very hungry!"
+        # title: "%base64EncodedAuth%"
+        title: "{service.auth:s}"
+        # body: "%checkindate%"
+        body: "{service.checkin:s}"
 
     response:
       status_code: 200
       body:
-        title: "{tavern.request_vars.json.title}"
-        body: "{tavern.request_vars.json.body}"
+        #   title: "{tavern.request_vars.json.title}"
+        #   body: "{tavern.request_vars.json.body}"
         state: "open"

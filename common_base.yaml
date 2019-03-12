@@ -1,0 +1,8 @@
+---
+name: test includes
+description: used for testing against local server
+
+variables:
+  service:
+    checkin: 'value from create_test_yaml.py'
+    auth: 'value from create_test_yaml.py'

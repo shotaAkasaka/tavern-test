@@ -1,0 +1,84 @@
+# CircleCIでやること
+# 1. ライブラリ諸々のインストール
+# 2. テスト用データの生成
+# 2'. python create_test_yaml.py 実行
+# 3. テスト実行(py.test test_github.tavern.yaml  -vv)
+
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/python:3.7.0-stretch
+    steps:
+      - checkout
+      - run:
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y unixodbc-dev
+      - restore_cache:
+          key: pip-cache-{{ .Branch }}-{{ checksum "requirements.txt" }}
+      - run:
+          name: install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt --exists-action=w
+      - save_cache:
+          paths:
+            - ./venv
+# 2. テスト用データの生成
+# 2'. python create_test_yaml.py 実行
+# 3. テスト実行(py.test test_github.tavern.yaml  -vv)
+      - run:
+          name: create test data
+          command : |
+            python3 create_test_yaml.py
+      - run:
+          name: run test
+          command: |
+            py.test test_github.tavern.yaml  -vv
+      # - run:
+      #     name: do check st
+      #     command: |
+      #       set -e
+      #       node ./case1/case1-1.js
+      #       node ./case1/case1-2.js
+      #       node ./case1/case1-3.js
+      #       node ./case2/case2-1.js
+      #       node ./case2/case2-2.js
+      #       node ./case2/case2-3.js
+      #       node ./case3/case3-1.js
+      #       node ./case3/case3-2.js
+      #       node ./case3/case3-3.js
+      #       node ./case3/case3-4.js
+      #       node ./case3/case3-5.js
+      # - run:
+      #     name: do check  prd
+      #     command: |
+      #       set -e
+      #       node ./case1/case1-1.js prd
+      #       node ./case1/case1-2.js prd
+      #       node ./case1/case1-3.js prd
+      #       node ./case2/case2-1.js prd
+      #       node ./case2/case2-2.js prd
+      #       node ./case2/case2-3.js prd
+      #       #node ./case3/case3-1.js prd prdの場合はテストしない
+      #       #node ./case3/case3-2.js prd prdの場合はテストしない
+      #       node ./case3/case3-3.js prd
+      #       node ./case3/case3-4.js prd
+      #       node ./case3/case3-5.js prd
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
+  # cycle:
+  #   triggers:
+  #     - schedule:
+  #         cron: "30 1,5,7 * * 1-5" # UTCで記述
+  #         filters:
+  #           branches:
+  #             only:
+  #               - master
+    jobs:
+      - test

@@ -1,0 +1,6 @@
+description: used for testing against local server
+name: test includes
+variables:
+  service:
+    auth: dXNlcjpwYXNz
+    checkin: '20190321'
