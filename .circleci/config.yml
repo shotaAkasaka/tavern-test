@@ -67,18 +67,18 @@ jobs:
       #       node ./case3/case3-3.js prd
       #       node ./case3/case3-4.js prd
       #       node ./case3/case3-5.js prd
-workflows:
-  version: 2
-  test:
-    jobs:
-      - test
-  # cycle:
-  #   triggers:
-  #     - schedule:
-  #         cron: "30 1,5,7 * * 1-5" # UTCで記述
-  #         filters:
-  #           branches:
-  #             only:
-  #               - master
-    jobs:
-      - test
+# workflows:
+#   version: 2
+#   test:
+#     jobs:
+#       - test
+#   # cycle:
+#   #   triggers:
+#   #     - schedule:
+#   #         cron: "30 1,5,7 * * 1-5" # UTCで記述
+#   #         filters:
+#   #           branches:
+#   #             only:
+#   #               - master
+#     jobs:
+#       - test
