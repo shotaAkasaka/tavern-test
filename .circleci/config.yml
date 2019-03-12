@@ -35,6 +35,7 @@ jobs:
           name: install pyyaml
           command: |
             sudo python3 -m pip install pyyaml
+            sudo python3 -m pip install tavern[pytest]
       - run:
           name: create test data
           command : |
