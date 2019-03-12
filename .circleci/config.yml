@@ -32,9 +32,13 @@ jobs:
 # 2'. python create_test_yaml.py 実行
 # 3. テスト実行(py.test test_github.tavern.yaml  -vv)
       - run:
+        name: install pyyaml
+        command: |
+          python3 -m pip install pyyaml
+      - run:
           name: create test data
           command : |
-            python create_test_yaml.py
+            python3 create_test_yaml.py
       - run:
           name: run test
           command: |
