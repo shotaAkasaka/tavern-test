@@ -4,28 +4,58 @@
 #
 #    pip-compile requirements.in
 #
-atomicwrites==1.3.0       # via pytest
-attrs==19.1.0             # via pytest
-certifi==2019.3.9         # via requests
-chardet==3.0.4            # via requests
-contextlib2==0.5.5        # via tavern
-docopt==0.6.2             # via pykwalify
-future==0.17.1            # via tavern
-idna==2.8                 # via requests
-jmespath==0.9.4           # via tavern
-more-itertools==6.0.0     # via pytest
-paho-mqtt==1.3.1          # via tavern
-pbr==5.1.3                # via stevedore
-pluggy==0.9.0             # via pytest
-py==1.8.0                 # via pytest
-pyjwt==1.7.1              # via tavern
-pykwalify==1.7.0          # via tavern
-pytest==4.3.0             # via tavern
-python-box==3.2.4         # via tavern
-python-dateutil==2.8.0    # via pykwalify
-pyyaml==3.13              # via pykwalify, tavern
-requests==2.21.0          # via tavern
-six==1.12.0               # via pytest, python-dateutil, stevedore
-stevedore==1.30.1         # via tavern
+atomicwrites==1.3.0
+    # via pytest
+attrs==19.1.0
+    # via pytest
+certifi==2022.12.7
+    # via requests
+chardet==3.0.4
+    # via requests
+contextlib2==0.5.5
+    # via tavern
+docopt==0.6.2
+    # via pykwalify
+future==0.17.1
+    # via tavern
+idna==2.8
+    # via requests
+jmespath==0.9.4
+    # via tavern
+more-itertools==6.0.0
+    # via pytest
+paho-mqtt==1.3.1
+    # via tavern
+pbr==5.1.3
+    # via stevedore
+pluggy==0.9.0
+    # via pytest
+py==1.8.0
+    # via pytest
+pyjwt==1.7.1
+    # via tavern
+pykwalify==1.7.0
+    # via tavern
+pytest==4.3.0
+    # via tavern
+python-box==3.2.4
+    # via tavern
+python-dateutil==2.8.0
+    # via pykwalify
+pyyaml==3.13
+    # via
+    #   pykwalify
+    #   tavern
+requests==2.21.0
+    # via tavern
+six==1.12.0
+    # via
+    #   pytest
+    #   python-dateutil
+    #   stevedore
+stevedore==1.30.1
+    # via tavern
 tavern[pytest]==0.22.1
-urllib3==1.24.1           # via requests
+    # via -r requirements.in
+urllib3==1.24.1
+    # via requests
